@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Pavan Kalyan Snake</title>
+
+<style>
+  body {
+    margin: 0;
+    height: 100vh;
+    background: black;
+    overflow: hidden;
+    font-family: Arial, sans-serif;
+  }
+
+  /* COMMON TEXT */
+  .text {
+    position: absolute;
+    top: 18%;
+    font-size: 48px;
+    font-weight: bold;
+    white-space: nowrap;
+  }
+
+  /* PAVAN — LEFT → STOP BEFORE CENTER */
+  #pavan {
+    left: -300px;
+    color: cyan;
+    animation: pavanMove 2.5s forwards;
+  }
+
+  @keyframes pavanMove {
+    to {
+      left: 5%;
+    }
+  }
+
+  /* KALYAN — RIGHT → STOP BEFORE CENTER */
+  #kalyan {
+    right:  -300px;
+    color: magenta;
+    animation: kalyanMove 2.5s forwards;
+  }
+
+  @keyframes kalyanMove {
+    to {
+      right: 5%;
+    }
+  }
+
+  /* CENTER ZONE (EMPTY SPACE) */
+  .center-zone {
+    position: absolute;
+    left: 35%;
+    width: 30%;
+    height: 100%;
+    pointer-events: none;
+  }
+
+  /* SNAKE */
+  .snake {
+    position: absolute;
+    top: 55%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    align-items: center;
+  }
+
+  /* HEAD */
+  .head {
+    width: 26px;
+    height: 26px;
+    background: radial-gradient(circle, #ADFF2F, #006400);
+    border-radius: 50%;
+    margin-right: 4px;
+  }
+
+  /* BODY SEGMENTS */
+  .segment {
+    width: 18px;
+    height: 18px;
+    background: radial-gradient(circle, #7CFC00, #006400);
+    border-radius: 50%;
+    margin: 2px;
+    animation: slither 0.6s infinite alternate;
+  }
+
+  .segment:nth-child(even) {
+    animation-delay: 0.9s;
+  }
+
+  @keyframes slither {
+    from {
+      transform: translateY(0);
+    }
+    to {
+      transform: translateY(6px);
+    }
+  }
+</style>
+</head>
+
+<body>
+
+  <!-- TEXT -->
+  <div id="pavan" class="text">PAVAN</div>
+  <div id="kalyan" class="text">KALYAN</div>
+
+  <!-- EMPTY CENTER SPACE (LOGICALLY RESERVED) -->
+  <div class="center-zone"></div>
+
+  <!-- SNAKE IN EXACT MIDDLE -->
+  <div class="snake">
+    <div class="head"></div>
+    <div class="segment"></div>
+    <div class="segment"></div>
+    <div class="segment"></div>
+    <div class="segment"></div>
+    <div class="segment"></div>
+    <div class="segment"></div>
+    <div class="segment"></div>
+  </div>
+
+</body>
+</html>
